@@ -8,8 +8,8 @@ on:
 
 jobs:
   test:
-    timeout-minutes: 60
     runs-on: ubuntu-latest
+    timeout-minutes: 60
 
     steps:
       - uses: actions/checkout@v4
@@ -19,20 +19,19 @@ jobs:
           node-version: lts/*
 
       - name: Install dependencies
-        run: npm install
         working-directory: example-4
+        run: npm ci
 
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
         working-directory: example-4
+        run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npx playwright test
         working-directory: example-4
+        run: npm test
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
           path: example-4/playwright-report/
-          retention-days: 30
