@@ -21,7 +21,7 @@ test.describe.serial("flixtube front end", () => {
         await expect(videos).toHaveCount(2);
 
         const firstVideo = videos.nth(0).locator("a"); // Check the first item in the video list.
-        await expect(firstVideo).toHaveText("SampleVideo_1280x720_1mb.mp4"); // Make sure file name is correct.
+        await expect(firstVideo).toHaveText("BROKEN_ON_PURPOSE.mp4"); // Make sure file name is correct.
         await expect(firstVideo).toHaveAttribute("href", "/video?id=5ea234a1c34230004592eb32"); // Make sure link is correct.
 
         const secondVideo = videos.nth(1).locator("a"); // Check the second item in the video list.
