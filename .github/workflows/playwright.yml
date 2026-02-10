@@ -18,14 +18,16 @@ jobs:
         with:
           node-version: lts/*
 
-      - name: Install Docker Compose
-        run: | 
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
-
       - name: Install dependencies
         working-directory: example-4
         run: npm ci
+
+      - name: Start backend (docker)
+        working-directory: example-4
+        run: docker compose up -d
+
+      - name: Wait for backend
+        run: sleep 15
 
       - name: Install Playwright Browsers
         working-directory: example-4
