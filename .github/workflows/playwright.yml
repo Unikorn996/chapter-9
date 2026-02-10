@@ -19,16 +19,24 @@ jobs:
           node-version: lts/*
 
       - name: Install dependencies
-        working-directory: example-4
-        run: npm ci
+        run: |
+          cd example-4
+          npm ci
 
       - name: Install Playwright Browsers
-        working-directory: example-4
-        run: npx playwright install --with-deps
+        run: |
+          cd example-4
+          npx playwright install --with-deps
+
+      - name: Start backend
+        run: |
+          cd example-4
+          docker-compose up -d
 
       - name: Run Playwright tests
-        working-directory: example-4
-        run: npm test
+        run: |
+          cd example-4
+          npm test
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
