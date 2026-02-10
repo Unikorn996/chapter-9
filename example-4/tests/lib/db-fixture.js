@@ -14,7 +14,7 @@ const dbFixturesUrl = "http://localhost:9000";
 // Loads a named database fixtyure.
 //
 async function loadFixture(databaseName, fixtureName) {
-    unloadFixture(databaseName, fixtureName);
+    await unloadFixture(databaseName, fixtureName);
 
     const url = dbFixturesUrl + "/load-fixture?db=" + databaseName + "&fix=" + fixtureName;
     await axios.get(url);

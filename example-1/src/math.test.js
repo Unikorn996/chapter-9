@@ -4,11 +4,11 @@
 
 const { square } = require("./math");
 
-describe("square function", () => {
+test("can square two", () => {
+    const mockMultiply = (a, b) => {
+        return 4;
+    };
 
-    test("can square two", () => {
-
-        const result = square(2);
-        expect(result).toBe(4);
-    });
+    const result = square(2, mockMultiply);
+    expect(result).toBe(4);
 });

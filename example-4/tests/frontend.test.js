@@ -6,7 +6,7 @@ const { loadFixture } = require('./lib/db-fixture');
 //
 // An example of running ab end-to-end test against our microservices application using Playwright.
 //
-describe("flixtube front end", () => {
+test.describe.serial("flixtube front end", () => {
 
     test("can list videos", async ({ page }) => {
 
